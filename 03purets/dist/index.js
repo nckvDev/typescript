@@ -1,3 +1,46 @@
 "use strict";
-console.log('typescript is here still Hello No more');
-console.log('typescript is here amazing');
+// class User {
+//    public email: string
+//    private name: string
+//    readonly city: string = 'korat'
+//    constructor(email: string, name: string) {
+//       this.email = email
+//       this.name = name
+//    }
+// }
+class User {
+    constructor(email, name) {
+        this.email = email;
+        this.name = name;
+        this._courseCount = 1;
+        this.city = 'korat';
+    }
+    deleteToken() {
+        console.log('Token deleted!');
+    }
+    get getAppleEmail() {
+        return `apple${this.email}`;
+    }
+    get courseCount() {
+        return this._courseCount;
+    }
+    set courseCount(courseNum) {
+        if (courseNum <= 1) {
+            throw new Error('Course count should be more than 1');
+        }
+        this._courseCount = courseNum;
+    }
+}
+class SubUser extends User {
+    constructor() {
+        super(...arguments);
+        this.isFamily = true;
+    }
+    changeCourseCount() {
+        this._courseCount = 4;
+    }
+}
+const nckv = new User('nckv@dev.com', 'nckv');
+console.log(nckv.getAppleEmail);
+// nckv.deleteToken()
+// nckv.name
